@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ability_Stab
   m_EditorClassIdentifier: 
   name: Stab
-  abilityText: He straight up stabs you.
+  abilityText: 'Snikt. Stab stab. '
   effects:
   - {fileID: 11400000, guid: 49b84e6e5315dcf4da8736ac304e1548, type: 2}

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ability_Bite
   m_EditorClassIdentifier: 
   name: Bite
-  abilityText: Monkey goes in for a bite. CHOMP!
+  abilityText: CHOMP!
   effects:
   - {fileID: 11400000, guid: 49b84e6e5315dcf4da8736ac304e1548, type: 2}

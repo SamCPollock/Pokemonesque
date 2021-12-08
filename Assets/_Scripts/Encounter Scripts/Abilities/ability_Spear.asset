@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ability_Spear
   m_EditorClassIdentifier: 
   name: Spear
-  abilityText: Woosh, he throws a spear!
+  abilityText: Woosh, the spear goes flying!
   effects:
   - {fileID: 11400000, guid: 49b84e6e5315dcf4da8736ac304e1548, type: 2}

@@ -27,6 +27,8 @@ public class scr_EncounterPlayerCharacter : ICharacter
             newButton.GetComponentInChildren<Text>().text = ability.name;
             newButton.GetComponent<Button>().onClick.AddListener(() => UseAbility(ability));
         }
+
+        UpdateHealth();
     }
 
     // Update is called once per frame
@@ -37,14 +39,24 @@ public class scr_EncounterPlayerCharacter : ICharacter
 
     public void UseAbility(so_Ability abilityToUse)
     {
-        // TODO: Make this call the Coroutine in EncounterUI to display the abilityText on screen. 
-        //encounterUI.StartCoroutine(AnimateTextCoroutine(abilityToUse.abilityText));
 
         if (scr_EncounterHandler.isPlayerTurn)
         {
             StartCoroutine(encounterUI.AnimateTextCoroutine(abilityToUse.abilityText));
             //yield return new WaitForSeconds(4);
+
+            foreach(so_IEffect effect in abilityToUse.effects)
+            {
+                scr_EncounterEnemyCharacter enemy = GameObject.FindObjectOfType<scr_EncounterEnemyCharacter>();
+                enemy.currentHealth -= effect.damage;
+                enemy.UpdateHealth();
+            }
             TakeTurn();
         }
+    }
+
+    public override void Die()
+    {
+        encounterUI.LosePanel.SetActive(true);
     }
 }

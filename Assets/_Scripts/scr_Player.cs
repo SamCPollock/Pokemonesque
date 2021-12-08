@@ -9,8 +9,9 @@ public class scr_Player : MonoBehaviour
 
     private Rigidbody2D rb;
 
-    private scr_SoundEffects soundEffectsManager; 
+    private scr_SoundEffects soundEffectsManager;
 
+    private scr_GameStateManager gameStateManager;
 
     [Header("RandomEncounters")]
     public bool isInRandomEncounterTrigger;
@@ -18,11 +19,14 @@ public class scr_Player : MonoBehaviour
     public GameObject randomEncounterScreen;
     public GameObject overworld;
 
+    
+
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         soundEffectsManager = FindObjectOfType<scr_SoundEffects>();
+        gameStateManager = GameObject.FindObjectOfType<scr_GameStateManager>();
     }
 
     void Update()
@@ -42,8 +46,11 @@ public class scr_Player : MonoBehaviour
             if (randomFloat < randomEncounterFrequency)
             {
                 Debug.Log("TIME FOR A RANDOM BATTLE!");
-                randomEncounterScreen.SetActive(true);
-                overworld.SetActive(false);
+                gameStateManager.SetEncounterState();
+                //randomEncounterScreen.SetActive(true);
+                //overworld.SetActive(false);
+                
+
             }
             
             // make random with badluck prevention. Random determines if random encounter begins. 

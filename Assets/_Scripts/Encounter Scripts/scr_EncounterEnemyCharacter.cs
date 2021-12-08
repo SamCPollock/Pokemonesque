@@ -27,6 +27,12 @@ public class scr_EncounterEnemyCharacter : ICharacter
     void Start()
     {
         encounterUI = GameObject.Find("State_Encounter").GetComponent<scr_EncounterUI>();
+        Initialize();
+    }
+
+    public void Initialize()
+    {
+        UpdateHealth();
 
     }
 
@@ -52,7 +58,7 @@ public class scr_EncounterEnemyCharacter : ICharacter
 
     }
 
-    void Shuffle<T>(List<T> inputList)
+    public void Shuffle<T>(List<T> inputList)
     {
         for (int i = 0; i < inputList.Count - 1; i++)
         {
@@ -91,10 +97,22 @@ public class scr_EncounterEnemyCharacter : ICharacter
         
         Debug.Log("Enemy using ability: " + abilities[abilitySlot]);
         StartCoroutine(encounterUI.AnimateTextCoroutine(abilities[abilitySlot].abilityText));
+
+        foreach (so_IEffect effect in abilities[abilitySlot].effects)
+        {
+            scr_EncounterPlayerCharacter player = GameObject.FindObjectOfType<scr_EncounterPlayerCharacter>();
+            player.currentHealth -= effect.damage;
+            player.UpdateHealth();
+        }
+
         scr_EncounterHandler.PassTurn();
         hasTakeTurn = false;
     }
 
+    public override void Die()
+    {
+        encounterUI.WinPanel.SetActive(true);
+    }
 
 
 
