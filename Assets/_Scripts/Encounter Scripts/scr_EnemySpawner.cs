@@ -34,7 +34,13 @@ public class scr_EnemySpawner : MonoBehaviour
         enemyScript.maxHealth = enemyToSpawn.maxHealth;
         enemyScript.currentHealth = enemyToSpawn.maxHealth;
         enemyScript.abilities = enemyToSpawn.abilities;
-        enemyScript.actionDeck = enemyToSpawn.deck;
+        enemyScript.actionDeck.Clear();
+        for (int i = 0; i < enemyToSpawn.deck.Count; i++)
+        {
+            enemyScript.actionDeck.Add(enemyToSpawn.deck[i]);
+        }
+        //enemyScript.actionDeck = enemyToSpawn.deck;
+        enemyScript.strength = enemyToSpawn.strength;
         enemyScript.Initialize();
 
         enemyGameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = enemyToSpawn.name;

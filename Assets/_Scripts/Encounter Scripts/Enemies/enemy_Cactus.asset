@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7754eea0935f7b45b5c1f97e37301db, type: 3}
+  m_Name: enemy_Cactus
+  m_EditorClassIdentifier: 
+  name: Cactus
+  maxHealth: 10
+  strength: 3
+  abilities:
+  - {fileID: 11400000, guid: 10cfca5131d5bec4da047e61865e1fed, type: 2}
+  - {fileID: 11400000, guid: ca6173ab7cc3590479d614b60c10d8bc, type: 2}
+  sprite: {fileID: 6231197382070093656, guid: 0b5fad878772ae54da33a06f9f69abe6, type: 3}
+  deck: 000000000100000001000000

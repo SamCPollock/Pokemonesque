@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: ability_Scratch
   m_EditorClassIdentifier: 
   name: Scratch
+  description: Deal 2 + 1d6 damage.
   abilityText: Scraaaaatch!
   effects:
   - {fileID: 11400000, guid: 49b84e6e5315dcf4da8736ac304e1548, type: 2}
+  - {fileID: 11400000, guid: f1943a4f50dcee14cab47d40895cc2ec, type: 2}
+  - {fileID: 11400000, guid: 413c0e49c84e717409e6eaa34b081d3e, type: 2}

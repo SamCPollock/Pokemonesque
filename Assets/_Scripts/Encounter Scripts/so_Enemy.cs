@@ -8,7 +8,9 @@ public class so_Enemy : ScriptableObject
 {
     public new string name;
     public float maxHealth;
-    public so_Ability[] abilities;
+    public int strength;
+
+    public List<so_Ability> abilities;
     public Sprite sprite;
 
     public List <int> deck;

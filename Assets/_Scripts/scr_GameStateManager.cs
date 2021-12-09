@@ -13,6 +13,7 @@ public class scr_GameStateManager : MonoBehaviour
     {
         OverworldState.SetActive(true);
         EncounterState.SetActive(false);
+        GameObject.FindObjectOfType<scr_MusicManager>().PlaySong(0);
     }
 
     public void SetEncounterState()
@@ -20,5 +21,7 @@ public class scr_GameStateManager : MonoBehaviour
         OverworldState.SetActive(false);
         EncounterState.SetActive(true);
         EncounterState.GetComponent<scr_EnemySpawner>().SetUpEnemy();
+        GameObject.FindObjectOfType<scr_MusicManager>().PlaySong(1);
+
     }
 }

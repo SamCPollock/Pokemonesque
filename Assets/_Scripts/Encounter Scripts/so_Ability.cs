@@ -6,6 +6,8 @@ using UnityEngine;
 public class so_Ability : ScriptableObject
 {
     public new string name;
+    public new string description;
+
     public string abilityText;
     public so_IEffect[] effects;
 }

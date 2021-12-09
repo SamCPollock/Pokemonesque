@@ -13,6 +13,10 @@ public class scr_EncounterEnemyCharacter : ICharacter
 
     private bool hasTakeTurn = false;
 
+    public Animator effectsAnimator;
+
+    private scr_SoundEffects soundEffectsManager;
+
 
     public override void TakeTurn()
     {
@@ -28,6 +32,8 @@ public class scr_EncounterEnemyCharacter : ICharacter
     {
         encounterUI = GameObject.Find("State_Encounter").GetComponent<scr_EncounterUI>();
         Initialize();
+        soundEffectsManager = GameObject.FindObjectOfType<scr_SoundEffects>();
+
     }
 
     public void Initialize()
@@ -39,7 +45,7 @@ public class scr_EncounterEnemyCharacter : ICharacter
     // Update is called once per frame
     void Update()
     {
-        if (scr_EncounterHandler.isPlayerTurn == false && hasTakeTurn == false)
+        if (scr_EncounterHandler.isPlayerTurn == false && hasTakeTurn == false && currentHealth > 0)
         {
             hasTakeTurn = true;
             Invoke("TakeTurn", 1);
@@ -97,13 +103,40 @@ public class scr_EncounterEnemyCharacter : ICharacter
         
         Debug.Log("Enemy using ability: " + abilities[abilitySlot]);
         StartCoroutine(encounterUI.AnimateTextCoroutine(abilities[abilitySlot].abilityText));
-
+        scr_EncounterPlayerCharacter player = GameObject.FindObjectOfType<scr_EncounterPlayerCharacter>();
+        float startingHealth = player.currentHealth;
         foreach (so_IEffect effect in abilities[abilitySlot].effects)
         {
-            scr_EncounterPlayerCharacter player = GameObject.FindObjectOfType<scr_EncounterPlayerCharacter>();
-            player.currentHealth -= effect.damage;
-            player.UpdateHealth();
+            player.currentHealth -= effect.baseDamage;                      // Raw damage
+            player.currentHealth -= (effect.strengthScaling * strength);    // StrengthScaling damage
+            player.currentHealth -= Random.Range(1, effect.damageRoll);     // Roll damage
+            player.strength -= effect.debuff;                               // Apply Debuff to opponent
+            strength += effect.buff;                                        // Apply Buff to self    
         }
+
+        switch (abilities[abilitySlot].name)
+        {
+            case "Scratch":
+                effectsAnimator.SetTrigger("boostTrigger");
+                soundEffectsManager.PlaySound(2);
+                break;
+            case "Screech":
+                effectsAnimator.SetTrigger("airTrigger");
+                soundEffectsManager.PlaySound(3);
+                break;
+            case "Sniff":
+                effectsAnimator.SetTrigger("splashTrigger");
+                soundEffectsManager.PlaySound(4);
+                break;
+            case "Bite":
+                effectsAnimator.SetTrigger("bloodTrigger");
+                soundEffectsManager.PlaySound(5);
+                break;
+        }
+
+        float endHealth = player.currentHealth;
+        Debug.Log("ENEMY DAMAGE DEALT = " + (startingHealth - endHealth));
+        player.UpdateHealth();
 
         scr_EncounterHandler.PassTurn();
         hasTakeTurn = false;
@@ -112,9 +145,15 @@ public class scr_EncounterEnemyCharacter : ICharacter
     public override void Die()
     {
         encounterUI.WinPanel.SetActive(true);
+        GrantAbilityToPlayer();
     }
 
-
+    public void GrantAbilityToPlayer()
+    {
+        scr_EncounterPlayerCharacter player = GameObject.FindObjectOfType<scr_EncounterPlayerCharacter>();
+        player.abilities.Add(abilities[0]);
+        Debug.Log("Granting player ability: " + abilities[0].name);
+    }
 
     // shuffler: 
     /*

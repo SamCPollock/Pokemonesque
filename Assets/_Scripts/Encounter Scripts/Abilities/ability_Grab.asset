@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: ability_Grab
   m_EditorClassIdentifier: 
   name: Grab
+  description: Deal 10 damage.
   abilityText: 'A huge grab. '
   effects:
+  - {fileID: 11400000, guid: 49b84e6e5315dcf4da8736ac304e1548, type: 2}
+  - {fileID: 11400000, guid: 49b84e6e5315dcf4da8736ac304e1548, type: 2}
+  - {fileID: 11400000, guid: 49b84e6e5315dcf4da8736ac304e1548, type: 2}
+  - {fileID: 11400000, guid: 49b84e6e5315dcf4da8736ac304e1548, type: 2}
   - {fileID: 11400000, guid: 49b84e6e5315dcf4da8736ac304e1548, type: 2}

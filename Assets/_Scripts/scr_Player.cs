@@ -61,11 +61,11 @@ public class scr_Player : MonoBehaviour
     {
         if (isInRandomEncounterTrigger)
         {
-            soundEffectsManager.PlaySound(scr_SoundEffects.SFX.StepSoft);
+            soundEffectsManager.PlaySound(1);
         }
         else
         {
-            soundEffectsManager.PlaySound(scr_SoundEffects.SFX.StepNormal);
+            soundEffectsManager.PlaySound(0);
         }
     }
 }

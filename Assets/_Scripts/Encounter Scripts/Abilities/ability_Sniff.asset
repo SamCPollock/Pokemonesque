@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ability_Sniff
   m_EditorClassIdentifier: 
   name: Sniff
+  description: Increase strength by 1.
   abilityText: Sniff. A biiiiig whiff.
   effects:
-  - {fileID: 11400000, guid: 49b84e6e5315dcf4da8736ac304e1548, type: 2}
+  - {fileID: 11400000, guid: 7c4e2080d15f3cc4884725c09c7a56c0, type: 2}

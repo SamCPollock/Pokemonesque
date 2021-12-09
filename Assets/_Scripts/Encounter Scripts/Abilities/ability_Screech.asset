@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: ability_Screech
   m_EditorClassIdentifier: 
   name: Screech
+  description: Reduce enemy strength by 1 and deal 2 damage.
   abilityText: Eee! Eee!
   effects:
+  - {fileID: 11400000, guid: e7f7afac20f799d4ab98c604f2fbafc0, type: 2}
   - {fileID: 11400000, guid: 49b84e6e5315dcf4da8736ac304e1548, type: 2}
-  - {fileID: 11400000, guid: 413c0e49c84e717409e6eaa34b081d3e, type: 2}

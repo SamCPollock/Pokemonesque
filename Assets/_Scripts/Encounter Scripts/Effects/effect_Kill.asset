@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5443f1be786690d48996470358f5e197, type: 3}
   m_Name: effect_Kill
   m_EditorClassIdentifier: 
-  damage: 100
+  baseDamage: 100
+  strengthScaling: 0
+  damageRoll: 0
+  buff: 0
+  debuff: 0

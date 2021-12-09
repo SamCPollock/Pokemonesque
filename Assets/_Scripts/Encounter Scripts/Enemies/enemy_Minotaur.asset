@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Minotaur
   maxHealth: 60
+  strength: 4
   abilities:
-  - {fileID: 11400000, guid: 098715730a053df4ea295f10628841a2, type: 2}
-  - {fileID: 11400000, guid: dbc1c9fe33778f54a9657dedd54e1541, type: 2}
+  - {fileID: 11400000, guid: f36e7cd1a07babd4f87d3d8a32a1bb0a, type: 2}
+  - {fileID: 11400000, guid: 442b0b1ed0ecf774a95cf5d73f1fe430, type: 2}
   sprite: {fileID: -3941432212523338681, guid: 9cc31a314334c5a4b9eca64726872b71, type: 3}
-  deck: 00000000
+  deck: 0100000000000000000000000000000000000000
