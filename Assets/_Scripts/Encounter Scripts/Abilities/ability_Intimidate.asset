@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a9a7e3688a06c1439f32853b553aaf1, type: 3}
-  m_Name: ability_Grunt
+  m_Name: ability_Intimidate
   m_EditorClassIdentifier: 
-  name: Grunt
+  name: Intimidate
   description: 'Reduce enemy strength by 1. '
-  abilityText: Ug ug.
+  abilityText: An intimidating glare..
   effects:
   - {fileID: 11400000, guid: e7f7afac20f799d4ab98c604f2fbafc0, type: 2}

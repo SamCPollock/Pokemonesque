@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: enemy_Cactus
   m_EditorClassIdentifier: 
   name: Cactus
-  maxHealth: 10
+  maxHealth: 12
   strength: 3
   abilities:
   - {fileID: 11400000, guid: 10cfca5131d5bec4da047e61865e1fed, type: 2}
-  - {fileID: 11400000, guid: ca6173ab7cc3590479d614b60c10d8bc, type: 2}
+  - {fileID: 11400000, guid: a37deed32ccd9cd489f1ac94ea88dc59, type: 2}
   sprite: {fileID: 6231197382070093656, guid: 0b5fad878772ae54da33a06f9f69abe6, type: 3}
-  deck: 000000000100000001000000
+  deck: 0000000000000000000000000100000001000000

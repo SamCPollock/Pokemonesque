@@ -22,4 +22,13 @@ public class scr_SaveManager : MonoBehaviour
         PlayerPrefs.SetFloat("playerPosX", playerPosition.x);
         PlayerPrefs.SetFloat("playerPosY", playerPosition.y);
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
+
 }

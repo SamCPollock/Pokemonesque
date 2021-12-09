@@ -17,6 +17,9 @@ public class scr_EncounterEnemyCharacter : ICharacter
 
     private scr_SoundEffects soundEffectsManager;
 
+    [SerializeField]
+    private scr_DamageText playerDamageText;
+
 
     public override void TakeTurn()
     {
@@ -101,7 +104,6 @@ public class scr_EncounterEnemyCharacter : ICharacter
     void UseAbility(int abilitySlot)
     {
         
-        Debug.Log("Enemy using ability: " + abilities[abilitySlot]);
         StartCoroutine(encounterUI.AnimateTextCoroutine(abilities[abilitySlot].abilityText));
         scr_EncounterPlayerCharacter player = GameObject.FindObjectOfType<scr_EncounterPlayerCharacter>();
         float startingHealth = player.currentHealth;
@@ -109,7 +111,8 @@ public class scr_EncounterEnemyCharacter : ICharacter
         {
             player.currentHealth -= effect.baseDamage;                      // Raw damage
             player.currentHealth -= (effect.strengthScaling * strength);    // StrengthScaling damage
-            player.currentHealth -= Random.Range(1, effect.damageRoll);     // Roll damage
+            if (effect.damageRoll > 0)
+                player.currentHealth -= Random.Range(1, effect.damageRoll);     // Roll damage
             player.strength -= effect.debuff;                               // Apply Debuff to opponent
             strength += effect.buff;                                        // Apply Buff to self    
         }
@@ -135,7 +138,10 @@ public class scr_EncounterEnemyCharacter : ICharacter
         }
 
         float endHealth = player.currentHealth;
-        Debug.Log("ENEMY DAMAGE DEALT = " + (startingHealth - endHealth));
+        int damageDealt = (int)(startingHealth - endHealth);
+
+        playerDamageText.ShowDamage(damageDealt);
+
         player.UpdateHealth();
 
         scr_EncounterHandler.PassTurn();

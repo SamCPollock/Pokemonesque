@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a9a7e3688a06c1439f32853b553aaf1, type: 3}
-  m_Name: ability_Spear
+  m_Name: ability_Poke
   m_EditorClassIdentifier: 
-  name: Spear
+  name: Poke
   description: 'Deal 2 + (2 x strength) damage. '
-  abilityText: Woosh, the spear goes flying!
+  abilityText: Poke poke.
   effects:
   - {fileID: 11400000, guid: 49b84e6e5315dcf4da8736ac304e1548, type: 2}
-  - {fileID: 11400000, guid: d021708b8975ff746bc13741ff5b090b, type: 2}
   - {fileID: 11400000, guid: d021708b8975ff746bc13741ff5b090b, type: 2}

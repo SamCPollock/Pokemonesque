@@ -12,7 +12,10 @@ public class scr_EncounterPlayerCharacter : ICharacter
     public Animator effectsAnimator;
     public Animator myAnimator;
     private scr_SoundEffects soundEffectsManager;
-    
+
+
+    [SerializeField]
+    private scr_DamageText enemyDamageText;
 
     public override void TakeTurn()
     {
@@ -41,6 +44,11 @@ public class scr_EncounterPlayerCharacter : ICharacter
             GameObject.Destroy(child.gameObject);
         }
 
+        if (abilities.Count > 4)
+        {
+            abilities.RemoveAt(0);
+        }
+
         foreach (so_Ability ability in abilities)
         {
             GameObject newButton = Instantiate(abilityButtonPrefab, abilitiesPanel.transform);
@@ -66,17 +74,18 @@ public class scr_EncounterPlayerCharacter : ICharacter
 
             foreach (so_IEffect effect in abilityToUse.effects)
             {
-
                 enemy.currentHealth -= effect.baseDamage;                      // Raw damage
                 enemy.currentHealth -= (effect.strengthScaling * strength);    // StrengthScaling damage
-                enemy.currentHealth -= Random.Range(1, effect.damageRoll);     // Roll damage
+                if (effect.damageRoll > 0)
+                    enemy.currentHealth -= Random.Range(1, effect.damageRoll);     // Roll damage
+
                 enemy.strength -= effect.debuff;                               // Apply Debuff to opponent
                 strength += effect.buff;                                       // Apply Buff to self
             }
 
             switch (abilityToUse.name)
             {
-                case "Scratch":
+                case "Power Up":
                     effectsAnimator.SetTrigger("boostTrigger");
                     soundEffectsManager.PlaySound(2);
                     break;
@@ -84,7 +93,7 @@ public class scr_EncounterPlayerCharacter : ICharacter
                     effectsAnimator.SetTrigger("airTrigger");
                     soundEffectsManager.PlaySound(3);
                     break;
-                case "Sniff":
+                case "Drench":
                     effectsAnimator.SetTrigger("splashTrigger");
                     soundEffectsManager.PlaySound(4);
                     break;
@@ -96,7 +105,11 @@ public class scr_EncounterPlayerCharacter : ICharacter
 
 
             float endHealth = enemy.currentHealth;
-            Debug.Log("PLAYER DAMAGE DEALT = " + (startingHealth - endHealth));
+
+            int damageDealt = (int)(startingHealth - endHealth);
+            enemyDamageText.ShowDamage(damageDealt);
+
+
 
             enemy.UpdateHealth();
 

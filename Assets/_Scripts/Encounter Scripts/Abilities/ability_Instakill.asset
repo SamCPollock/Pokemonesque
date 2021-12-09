@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a9a7e3688a06c1439f32853b553aaf1, type: 3}
-  m_Name: ability_Sniff
+  m_Name: ability_Instakill
   m_EditorClassIdentifier: 
-  name: Sniff
-  description: Increase strength by 1.
-  abilityText: Sniff. A biiiiig whiff.
+  name: INSTAKILL
+  description: Deal 100 damage.
+  abilityText: Cheater cheater, pumpkin eater.
   effects:
-  - {fileID: 11400000, guid: 7c4e2080d15f3cc4884725c09c7a56c0, type: 2}
+  - {fileID: 11400000, guid: 49b84e6e5315dcf4da8736ac304e1548, type: 2}
+  - {fileID: 11400000, guid: f1943a4f50dcee14cab47d40895cc2ec, type: 2}
+  - {fileID: 11400000, guid: 413c0e49c84e717409e6eaa34b081d3e, type: 2}
